@@ -1,0 +1,42 @@
+.login-loading {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary-light);
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+    padding: var(--space-xs) var(--space-sm);
+}
+
+@media (max-width: 768px) {
+    .user-name {
+        display: none;
+    }
+}
