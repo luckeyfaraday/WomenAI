@@ -3,9 +3,7 @@ const router = express.Router();
 const Groq = require('groq-sdk');
 const { checkUsageLimit } = require('../middleware/checkSubscription');
 
-const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY
-});
+
 
 const SYSTEM_PROMPT = `You are WomenAI, a compassionate AI companion specifically designed to support women's health, wellness, and safety.
 
@@ -65,6 +63,18 @@ router.post('/', checkUsageLimit('chat_messages', 10), async (req, res) => {
     }
 
     try {
+        // Initialize Groq client lazily to prevent startup crashes
+        if (!process.env.GROQ_API_KEY) {
+            console.error('GROQ_API_KEY is missing in environment variables');
+            return res.status(500).json({
+                error: 'Server configuration error: AI service is not available.'
+            });
+        }
+
+        const groq = new Groq({
+            apiKey: process.env.GROQ_API_KEY
+        });
+
         // Build conversation history for Groq
         const messages = [
             { role: 'system', content: SYSTEM_PROMPT }
