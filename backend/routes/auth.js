@@ -14,10 +14,15 @@ router.get('/google', (req, res, next) => {
 router.get('/google/callback',
     require('passport').authenticate('google', { failureRedirect: '/login' }),
     (req, res) => {
+        console.log('Auth Callback Success! User:', req.user?.id);
+        console.log('Session ID:', req.sessionID);
         const returnTo = req.session.returnTo || '/';
         delete req.session.returnTo;
         const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-        res.redirect(`${frontendUrl}${returnTo}`);
+        req.session.save((err) => {
+            if (err) console.error("Session Save Error:", err);
+            res.redirect(`${frontendUrl}${returnTo}`);
+        });
     }
 );
 

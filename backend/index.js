@@ -96,6 +96,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Debug Middleware: Log Session & Auth State (After Session Init)
+app.use((req, res, next) => {
+  if (['/health', '/favicon.ico', '/api/test'].includes(req.path)) return next();
+  console.log(`[${req.method}] ${req.path}`);
+  console.log(' - Session ID:', req.sessionID);
+  console.log(' - Session Data:', req.session ? Object.keys(req.session) : 'None');
+  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
+  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
+  next();
+});
+
 // Health check endpoint (for UptimeRobot and Render)
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
