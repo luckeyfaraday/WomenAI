@@ -13,12 +13,16 @@ const moodRoutes = require('./routes/mood');
 const safetyRoutes = require('./routes/safety');
 const chatRoutes = require('./routes/chat');
 const authRoutes = require('./routes/auth');
+const stripeRoutes = require('./routes/stripe');
 
 // Middleware
 app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true
 }));
+
+// Stripe webhook needs raw body, must come before express.json()
+app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
 // Session configuration
@@ -51,6 +55,7 @@ app.use('/api/cycles', cyclesRoutes);
 app.use('/api/mood', moodRoutes);
 app.use('/api/safety', safetyRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/stripe', stripeRoutes);
 
 // Test Route
 app.get('/api/test', (req, res) => {

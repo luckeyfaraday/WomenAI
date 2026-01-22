@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const { checkUsageLimit } = require('../middleware/checkSubscription');
 
 // GET /api/mood - Retrieve mood history
 router.get('/', async (req, res) => {
@@ -13,8 +14,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST /api/mood - Log mood
-router.post('/', async (req, res) => {
+// POST /api/mood - Log mood (with rate limiting for free tier)
+router.post('/', checkUsageLimit('mood_entries', 10), async (req, res) => {
     const { mood_score, tags, notes, user_id } = req.body;
 
     if (!mood_score || mood_score < 1 || mood_score > 5) {

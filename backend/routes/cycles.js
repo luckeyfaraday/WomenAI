@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const { checkUsageLimit } = require('../middleware/checkSubscription');
 
 // GET /api/cycles - Retrieve cycle history
 router.get('/', async (req, res) => {
@@ -14,8 +15,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST /api/cycles - Log a new cycle
-router.post('/', async (req, res) => {
+// POST /api/cycles - Log a new cycle (with rate limiting for free tier)
+router.post('/', checkUsageLimit('cycle_entries', 10), async (req, res) => {
     const { start_date, user_id } = req.body; // Expect user_id for now until auth
 
     // Basic validation

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Groq = require('groq-sdk');
+const { checkUsageLimit } = require('../middleware/checkSubscription');
 
 const groq = new Groq({
     apiKey: process.env.GROQ_API_KEY
@@ -55,8 +56,8 @@ For medical concerns: "While I can provide general information, I'm not a doctor
 
 Be helpful, supportive, and always prioritize the user's wellbeing.`;
 
-// POST /api/chat - Handle chat messages
-router.post('/', async (req, res) => {
+// POST /api/chat - Handle chat messages (with rate limiting for free tier)
+router.post('/', checkUsageLimit('chat_messages', 10), async (req, res) => {
     const { message, history } = req.body;
 
     if (!message) {
