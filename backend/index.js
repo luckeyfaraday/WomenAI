@@ -60,6 +60,16 @@ if (isProduction) {
 app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
+// Debug Middleware: Log Session & Auth State
+app.use((req, res, next) => {
+  if (['/health', '/favicon.ico'].includes(req.path)) return next();
+  console.log(`[${req.method}] ${req.path}`);
+  console.log(' - Session ID:', req.sessionID);
+  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
+  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
+  next();
+});
+
 // Session configuration
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
