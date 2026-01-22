@@ -7,6 +7,7 @@ const passport = require('./passport-config');
 const { Pool } = require('pg');
 const app = express();
 const port = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
 const cyclesRoutes = require('./routes/cycles');
 const moodRoutes = require('./routes/mood');
@@ -15,11 +16,29 @@ const chatRoutes = require('./routes/chat');
 const authRoutes = require('./routes/auth');
 const stripeRoutes = require('./routes/stripe');
 
-// Middleware
+// CORS configuration - support both dev and production
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
+
+// Trust proxy for secure cookies behind Render's proxy
+if (isProduction) {
+  app.set('trust proxy', 1);
+}
 
 // Stripe webhook needs raw body, must come before express.json()
 app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
@@ -27,7 +46,8 @@ app.use(express.json());
 
 // Session configuration
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: isProduction ? { rejectUnauthorized: false } : false
 });
 
 app.use(session({
@@ -41,13 +61,19 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: false // Set to true in production with HTTPS
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax'
   }
 }));
 
 // Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Health check endpoint (for UptimeRobot and Render)
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 
 // Routes
 app.use('/auth', authRoutes);
@@ -67,5 +93,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port} (${isProduction ? 'production' : 'development'})`);
 });
