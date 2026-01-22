@@ -52,9 +52,26 @@ app.use(cors({
 }));
 
 // Trust proxy for secure cookies behind Render's proxy
+// Trust proxy configuration
+// We need to trust the proxy chain (Vercel -> Render) to ensure req.secure is true
 if (isProduction) {
-  app.set('trust proxy', 1);
+  // Trust all proxies (needed for Vercel -> Render setup)
+  app.set('trust proxy', true);
 }
+
+// Debug Middleware: Log Session & Auth State (After Session Init)
+app.use((req, res, next) => {
+  if (['/health', '/favicon.ico', '/api/test'].includes(req.path)) return next();
+  console.log(`[${req.method}] ${req.path}`);
+  console.log(' - Protocol:', req.protocol);
+  console.log(' - Secure:', req.secure);
+  console.log(' - X-Forwarded-Proto:', req.get('x-forwarded-proto'));
+  console.log(' - Session ID:', req.sessionID);
+  console.log(' - Session Data:', req.session ? Object.keys(req.session) : 'None');
+  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
+  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
+  next();
+});
 
 // Stripe webhook needs raw body, must come before express.json()
 app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
