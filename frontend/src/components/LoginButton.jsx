@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { LogIn, LogOut, User } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import './LoginButton.css';
 
 export default function LoginButton() {
@@ -13,7 +14,7 @@ export default function LoginButton() {
 
     const checkAuth = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/auth/user', {
+            const response = await axios.get(`${API_BASE_URL}/auth/user`, {
                 withCredentials: true
             });
             setUser(response.data);
@@ -25,12 +26,12 @@ export default function LoginButton() {
     };
 
     const handleLogin = () => {
-        window.location.href = 'http://localhost:3000/auth/google';
+        window.location.href = `${API_BASE_URL}/auth/google`;
     };
 
     const handleLogout = async () => {
         try {
-            await axios.get('http://localhost:3000/auth/logout', {
+            await axios.get(`${API_BASE_URL}/auth/logout`, {
                 withCredentials: true
             });
             setUser(null);

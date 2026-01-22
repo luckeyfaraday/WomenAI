@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 export default function CycleLog({ onSuccess }) {
     const [startDate, setStartDate] = useState('');
@@ -11,7 +12,7 @@ export default function CycleLog({ onSuccess }) {
         setLoading(true);
 
         try {
-            await axios.post('http://localhost:3000/api/cycles', {
+            await axios.post(`${API_BASE_URL}/api/cycles`, {
                 start_date: startDate,
                 user_id: 1
             });

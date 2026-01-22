@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Calendar, Smile } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 export default function History() {
     const [cycles, setCycles] = useState([]);
@@ -11,8 +12,8 @@ export default function History() {
         const fetchData = async () => {
             try {
                 const [cyclesRes, moodsRes] = await Promise.all([
-                    axios.get('http://localhost:3000/api/cycles'),
-                    axios.get('http://localhost:3000/api/mood')
+                    axios.get(`${API_BASE_URL}/api/cycles`),
+                    axios.get(`${API_BASE_URL}/api/mood`)
                 ]);
                 setCycles(cyclesRes.data);
                 setMoods(moodsRes.data);

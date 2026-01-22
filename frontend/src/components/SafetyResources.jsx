@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Shield, Phone, Globe } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 export default function SafetyResources() {
     const [resources, setResources] = useState([]);
@@ -9,7 +10,7 @@ export default function SafetyResources() {
     useEffect(() => {
         const fetchResources = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/safety');
+                const response = await axios.get(`${API_BASE_URL}/api/safety`);
                 setResources(response.data);
             } catch (error) {
                 console.error('Error fetching safety resources:', error);

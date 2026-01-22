@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import './ChatInterface.css';
 
 export default function ChatInterface() {
@@ -35,7 +36,7 @@ export default function ChatInterface() {
 
         try {
             // TODO: Replace with actual AI API call
-            const response = await axios.post('http://localhost:3000/api/chat', {
+            const response = await axios.post(`${API_BASE_URL}/api/chat`, {
                 message: userMessage,
                 history: messages
             });

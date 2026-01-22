@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Smile, Frown, Meh } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const MOOD_OPTIONS = [
     { score: 5, label: 'Excellent', emoji: '😊', color: 'hsl(140, 60%, 50%)' },
@@ -34,7 +35,7 @@ export default function MoodTracker({ onSuccess }) {
 
         setLoading(true);
         try {
-            await axios.post('http://localhost:3000/api/mood', {
+            await axios.post(`${API_BASE_URL}/api/mood`, {
                 mood_score: moodScore,
                 tags: selectedTags,
                 notes: notes || null,
