@@ -1,10 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { query } = require('../db');
 
+let stripe;
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+} else {
+    console.warn('STRIPE_SECRET_KEY is missing. Stripe features will be disabled.');
+}
+
+// Middleware to check if Stripe is configured
+const ensureStripeConfigured = (req, res, next) => {
+    if (!stripe) {
+        return res.status(503).json({
+            error: 'Stripe is not configured on this server.'
+        });
+    }
+    next();
+};
+
 // Create Stripe Checkout Session
-router.post('/create-checkout-session', async (req, res) => {
+router.post('/create-checkout-session', ensureStripeConfigured, async (req, res) => {
     try {
         if (!req.user || !req.user.id) {
             return res.status(401).json({ error: 'Authentication required' });
@@ -63,7 +79,7 @@ router.post('/create-checkout-session', async (req, res) => {
 });
 
 // Create Customer Portal Session
-router.post('/create-portal-session', async (req, res) => {
+router.post('/create-portal-session', ensureStripeConfigured, async (req, res) => {
     try {
         if (!req.user || !req.user.id) {
             return res.status(401).json({ error: 'Authentication required' });
@@ -91,7 +107,7 @@ router.post('/create-portal-session', async (req, res) => {
 });
 
 // Webhook handler
-router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+router.post('/webhook', express.raw({ type: 'application/json' }), ensureStripeConfigured, async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let event;
 
