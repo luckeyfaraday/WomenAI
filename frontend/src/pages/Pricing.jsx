@@ -63,7 +63,7 @@ export default function Pricing() {
                     <div className="pricing-header">
                         <h3>Premium</h3>
                         <div className="pricing-price">
-                            <span className="price">$9.99</span>
+                            <span className="price">$19.99</span>
                             <span className="period">/month</span>
                         </div>
                     </div>

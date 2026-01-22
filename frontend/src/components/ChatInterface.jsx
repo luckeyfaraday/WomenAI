@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send } from 'lucide-react';
 import axios from 'axios';
 import API_BASE_URL from '../config';
+import UpgradePrompt from './UpgradePrompt';
 import './ChatInterface.css';
 
 export default function ChatInterface() {
@@ -13,6 +14,7 @@ export default function ChatInterface() {
     ]);
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showUpgrade, setShowUpgrade] = useState(false);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -39,7 +41,7 @@ export default function ChatInterface() {
             const response = await axios.post(`${API_BASE_URL}/api/chat`, {
                 message: userMessage,
                 history: messages
-            });
+            }, { withCredentials: true });
 
             setMessages(prev => [...prev, {
                 role: 'assistant',
@@ -47,57 +49,75 @@ export default function ChatInterface() {
             }]);
         } catch (error) {
             console.error('Chat error:', error);
-            setMessages(prev => [...prev, {
-                role: 'assistant',
-                content: 'I\'m having trouble connecting right now. Please try again in a moment.'
-            }]);
+
+            // Handle rate limit error
+            if (error.response?.status === 429) {
+                setShowUpgrade(true);
+                setMessages(prev => [...prev, {
+                    role: 'assistant',
+                    content: 'You\'ve reached your free tier limit for today. Upgrade to Premium for unlimited chat! 💜'
+                }]);
+            } else {
+                setMessages(prev => [...prev, {
+                    role: 'assistant',
+                    content: 'I\'m having trouble connecting right now. Please try again in a moment.'
+                }]);
+            }
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="chat-container card">
-            <div className="chat-header">
-                <MessageCircle className="icon-primary" />
-                <h3>Chat with WomenAI</h3>
-            </div>
-
-            <div className="chat-messages">
-                {messages.map((msg, idx) => (
-                    <div key={idx} className={`message ${msg.role}`}>
-                        <div className="message-content">
-                            {msg.content}
-                        </div>
-                    </div>
-                ))}
-                {loading && (
-                    <div className="message assistant">
-                        <div className="message-content typing">
-                            <span></span><span></span><span></span>
-                        </div>
-                    </div>
-                )}
-                <div ref={messagesEndRef} />
-            </div>
-
-            <form onSubmit={handleSubmit} className="chat-input-form">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask me anything..."
-                    disabled={loading}
-                    className="chat-input"
+        <>
+            {showUpgrade && (
+                <UpgradePrompt
+                    limit={10}
+                    resourceType="messages"
+                    onClose={() => setShowUpgrade(false)}
                 />
-                <button
-                    type="submit"
-                    disabled={loading || !input.trim()}
-                    className="btn btn-primary chat-send-btn"
-                >
-                    <Send size={20} />
-                </button>
-            </form>
-        </div>
-    );
+            )}
+            <div className="chat-container card">
+                <div className="chat-header">
+                    <MessageCircle className="icon-primary" />
+                    <h3>Chat with WomenAI</h3>
+                </div>
+
+                <div className="chat-messages">
+                    {messages.map((msg, idx) => (
+                        <div key={idx} className={`message ${msg.role}`}>
+                            <div className="message-content">
+                                {msg.content}
+                            </div>
+                        </div>
+                    ))}
+                    {loading && (
+                        <div className="message assistant">
+                            <div className="message-content typing">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    )}
+                    <div ref={messagesEndRef} />
+                </div>
+
+                <form onSubmit={handleSubmit} className="chat-input-form">
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Ask me anything..."
+                        disabled={loading}
+                        className="chat-input"
+                    />
+                    <button
+                        type="submit"
+                        disabled={loading || !input.trim()}
+                        className="btn btn-primary chat-send-btn"
+                    >
+                        <Send size={20} />
+                    </button>
+                </form>
+            </div>
+            );
 }
