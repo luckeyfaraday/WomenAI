@@ -10,6 +10,8 @@ passport.use(new GoogleStrategy({
 },
     async (accessToken, refreshToken, profile, done) => {
         try {
+            console.log('Passport Strategy: Processing user', profile.id, profile.displayName);
+
             // Check if user exists
             const existingUser = await db.query(
                 'SELECT * FROM users WHERE google_id = $1',
@@ -17,10 +19,11 @@ passport.use(new GoogleStrategy({
             );
 
             if (existingUser.rows.length > 0) {
-                // User exists, return it
+                console.log('Passport: User found', existingUser.rows[0].id);
                 return done(null, existingUser.rows[0]);
             }
 
+            console.log('Passport: Creating new user');
             // Create new user
             const newUser = await db.query(
                 `INSERT INTO users (google_id, email, name, picture) 
@@ -34,8 +37,10 @@ passport.use(new GoogleStrategy({
                 ]
             );
 
+            console.log('Passport: User created', newUser.rows[0].id);
             done(null, newUser.rows[0]);
         } catch (err) {
+            console.error('Passport Error:', err);
             done(err, null);
         }
     }
