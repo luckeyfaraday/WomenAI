@@ -18,4 +18,4 @@ services:
       - key: SESSION_SECRET
         sync: false
       - key: FRONTEND_URL
-        value: https://womenai.vercel.app
+        value: https://womenai.onrender.com
