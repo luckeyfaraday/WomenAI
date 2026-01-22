@@ -16,7 +16,8 @@ router.get('/google/callback',
     (req, res) => {
         const returnTo = req.session.returnTo || '/';
         delete req.session.returnTo;
-        res.redirect(`http://localhost:5173${returnTo}`);
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        res.redirect(`${frontendUrl}${returnTo}`);
     }
 );
 
