@@ -98,7 +98,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 1. Click **"Create Web Service"**
 2. Wait 2-3 minutes for deployment
 3. Watch the logs for any errors
-4. Your API will be at: `https://womenai-api.onrender.com`
+4. Your API will be at: `https://womenai.onrender.com`
 
 ### 2.5 Test Backend
 ```bash
@@ -230,7 +230,7 @@ vercel --prod
 
 Your WomenAI app is now live at:
 - **Frontend**: https://womenai.vercel.app
-- **Backend API**: https://womenai-api.onrender.com
+- **Backend API**: https://womenai.onrender.com
 
 **Costs**: $0/month 💰
 
