@@ -20,16 +20,32 @@ const stripeRoutes = require('./routes/stripe');
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  process.env.FRONTEND_URL
+  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL?.replace(/\/$/, '') // Handle trailing slash
 ].filter(Boolean);
+
+console.log('Production mode:', isProduction);
+console.log('Allowed Origins:', allowedOrigins);
+console.log('Environment Check:', {
+  HAS_DB: !!process.env.DATABASE_URL,
+  HAS_GROQ: !!process.env.GROQ_API_KEY,
+  HAS_GOOGLE_ID: !!process.env.GOOGLE_CLIENT_ID,
+  HAS_GOOGLE_SECRET: !!process.env.GOOGLE_CLIENT_SECRET,
+  FRONTEND_URL: process.env.FRONTEND_URL
+});
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+
+    // Normalize origin for comparison
+    const normalizedOrigin = origin.replace(/\/$/, '');
+
+    if (allowedOrigins.some(ao => ao.replace(/\/$/, '') === normalizedOrigin)) {
       return callback(null, true);
     }
+
+    console.warn(`CORS blocked request from origin: ${origin}`);
     return callback(new Error('Not allowed by CORS'));
   },
   credentials: true
