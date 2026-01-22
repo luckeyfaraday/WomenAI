@@ -1,0 +1,27 @@
+.subscription-status {
+    max-width: 400px;
+}
+
+.subscription-badge-container {
+    margin-top: var(--space-md);
+    display: flex;
+    justify-content: center;
+}
+
+.subscription-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.subscription-badge.free {
+    background: linear-gradient(135deg, hsl(140, 60%, 85%), hsl(100, 60%, 85%));
+    color: hsl(140, 60%, 30%);
+}
+
+.subscription-badge.premium {
+    background: linear-gradient(135deg, hsl(320, 70%, 60%), hsl(280, 70%, 60%));
+    color: white;
+}
