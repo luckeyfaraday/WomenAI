@@ -104,8 +104,8 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? 'none' : 'lax'
+    secure: isProduction, // Still requires HTTPS
+    sameSite: 'lax' // Proxy makes it Same-Origin, so 'lax' is better/safer than 'none'
   }
 }));
 
