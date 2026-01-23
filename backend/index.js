@@ -24,15 +24,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL?.replace(/\/$/, '') // Handle trailing slash
 ].filter(Boolean);
 
-console.log('Production mode:', isProduction);
-console.log('Allowed Origins:', allowedOrigins);
-console.log('Environment Check:', {
-  HAS_DB: !!process.env.DATABASE_URL,
-  HAS_GROQ: !!process.env.GROQ_API_KEY,
-  HAS_GOOGLE_ID: !!process.env.GOOGLE_CLIENT_ID,
-  HAS_GOOGLE_SECRET: !!process.env.GOOGLE_CLIENT_SECRET,
-  FRONTEND_URL: process.env.FRONTEND_URL
-});
+
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -59,33 +51,13 @@ if (isProduction) {
   app.set('trust proxy', true);
 }
 
-// Debug Middleware: Log Session & Auth State (After Session Init)
-app.use((req, res, next) => {
-  if (['/health', '/favicon.ico', '/api/test'].includes(req.path)) return next();
-  console.log(`[${req.method}] ${req.path}`);
-  console.log(' - Protocol:', req.protocol);
-  console.log(' - Secure:', req.secure);
-  console.log(' - X-Forwarded-Proto:', req.get('x-forwarded-proto'));
-  console.log(' - Session ID:', req.sessionID);
-  console.log(' - Session Data:', req.session ? Object.keys(req.session) : 'None');
-  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
-  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
-  next();
-});
+
 
 // Stripe webhook needs raw body, must come before express.json()
 app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
-// Debug Middleware: Log Session & Auth State
-app.use((req, res, next) => {
-  if (['/health', '/favicon.ico'].includes(req.path)) return next();
-  console.log(`[${req.method}] ${req.path}`);
-  console.log(' - Session ID:', req.sessionID);
-  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
-  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
-  next();
-});
+
 
 // Session configuration
 const pool = new Pool({
@@ -113,16 +85,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Debug Middleware: Log Session & Auth State (After Session Init)
-app.use((req, res, next) => {
-  if (['/health', '/favicon.ico', '/api/test'].includes(req.path)) return next();
-  console.log(`[${req.method}] ${req.path}`);
-  console.log(' - Session ID:', req.sessionID);
-  console.log(' - Session Data:', req.session ? Object.keys(req.session) : 'None');
-  console.log(' - User:', req.user ? req.user.id : 'Unauthenticated');
-  console.log(' - Cookies:', req.headers.cookie ? 'Present' : 'None');
-  next();
-});
+
 
 // Health check endpoint (for UptimeRobot and Render)
 app.get('/health', (req, res) => {
