@@ -1,15 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, Smile } from 'lucide-react';
 import axios from 'axios';
 import API_BASE_URL from '../config';
+import CycleLog from '../components/CycleLog';
+import MoodTracker from '../components/MoodTracker';
 
-export default function History() {
+export default function Track() {
+    const [refreshKey, setRefreshKey] = useState(0);
     const [cycles, setCycles] = useState([]);
     const [moods, setMoods] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loadingHistory, setLoadingHistory] = useState(true);
 
+    const handleSuccess = () => {
+        setRefreshKey(prev => prev + 1);
+    };
+
+    // Fetch history whenever a new log is added (refreshKey changes)
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchHistory = async () => {
             try {
                 const [cyclesRes, moodsRes] = await Promise.all([
                     axios.get(`${API_BASE_URL}/api/cycles`),
@@ -20,30 +28,40 @@ export default function History() {
             } catch (error) {
                 console.error('Error fetching history:', error);
             } finally {
-                setLoading(false);
+                setLoadingHistory(false);
             }
         };
 
-        fetchData();
-    }, []);
-
-    if (loading) {
-        return <div className="container">Loading history...</div>;
-    }
+        fetchHistory();
+    }, [refreshKey]);
 
     return (
         <div className="container">
-            <h1 style={{ marginBottom: 'var(--space-lg)', color: 'var(--color-primary)' }}>
-                Your History
+            <h1 style={{ marginBottom: 'var(--space-md)', color: 'var(--color-primary)' }}>
+                Track Your Health
             </h1>
 
+            {/* Loggers */}
+            <div style={{ display: 'grid', gap: 'var(--space-lg)', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginBottom: 'var(--space-xl)' }}>
+                <CycleLog onSuccess={handleSuccess} />
+                <MoodTracker onSuccess={handleSuccess} />
+            </div>
+
+            {/* History Section */}
+            <h2 style={{ marginBottom: 'var(--space-md)', color: 'var(--color-text-muted)', fontSize: '1.5rem' }}>
+                History
+            </h2>
+
             <div style={{ display: 'grid', gap: 'var(--space-lg)', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+                {/* Cycle History */}
                 <div className="card">
                     <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
                         <Calendar className="icon-primary" />
-                        Cycle History
+                        Cycle Logs
                     </h3>
-                    {cycles.length === 0 ? (
+                    {loadingHistory ? (
+                        <p>Loading...</p>
+                    ) : cycles.length === 0 ? (
                         <p style={{ color: 'var(--color-text-muted)' }}>No cycles logged yet</p>
                     ) : (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
@@ -71,12 +89,15 @@ export default function History() {
                     )}
                 </div>
 
+                {/* Mood History */}
                 <div className="card">
                     <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: 'var(--space-md)' }}>
                         <Smile className="icon-primary" />
-                        Mood History
+                        Mood Logs
                     </h3>
-                    {moods.length === 0 ? (
+                    {loadingHistory ? (
+                        <p>Loading...</p>
+                    ) : moods.length === 0 ? (
                         <p style={{ color: 'var(--color-text-muted)' }}>No moods logged yet</p>
                     ) : (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>

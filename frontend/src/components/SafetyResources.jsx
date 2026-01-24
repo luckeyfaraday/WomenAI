@@ -11,9 +11,18 @@ export default function SafetyResources() {
         const fetchResources = async () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}/api/safety`);
-                setResources(response.data);
+                if (response.data && response.data.length > 0) {
+                    setResources(response.data);
+                } else {
+                    throw new Error('No data');
+                }
             } catch (error) {
-                console.error('Error fetching safety resources:', error);
+                console.warn('Backend not available, using fallback data');
+                setResources([
+                    { id: 1, name: 'National Domestic Violence Hotline', category: 'Domestic Violence', phone: '1-800-799-7233', website: 'https://www.thehotline.org' },
+                    { id: 2, name: 'RAINN (National Sexual Assault Hotline)', category: 'Sexual Assault', phone: '1-800-656-4673', website: 'https://www.rainn.org' },
+                    { id: 3, name: 'Crisis Text Line', category: 'Crisis Support', phone: 'Text HOME to 741741', website: 'https://www.crisistextline.org' }
+                ]);
             } finally {
                 setLoading(false);
             }

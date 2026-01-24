@@ -46,9 +46,10 @@
     width: 80px;
     height: 80px;
     margin: 0 auto var(--space-md);
-    background: linear-gradient(135deg, hsl(320, 70%, 60%), hsl(280, 70%, 60%));
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     border-radius: var(--radius-full);
     color: white;
+    box-shadow: var(--shadow-md);
 }
 
 .upgrade-prompt-modal h3 {
