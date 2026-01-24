@@ -20,6 +20,9 @@ const stripeRoutes = require('./routes/stripe');
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'capacitor://localhost',
+  'http://localhost',
+  'https://localhost',
   process.env.FRONTEND_URL,
   process.env.FRONTEND_URL?.replace(/\/$/, '') // Handle trailing slash
 ].filter(Boolean);
