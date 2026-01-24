@@ -31,6 +31,8 @@ jobs:
       - name: Build Web App
         working-directory: frontend
         run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Sync Capacitor
         working-directory: frontend
