@@ -80,6 +80,7 @@ router.get('/user', (req, res) => {
 // POST /auth/mobile-login - Exchange token for session
 router.post('/mobile-login', async (req, res) => {
     const { token } = req.body;
+    console.log('[DEBUG] /auth/mobile-login called with token:', token ? 'Token exists' : 'No token');
 
     if (!token) {
         return res.status(400).json({ error: 'Token required' });
@@ -88,12 +89,15 @@ router.post('/mobile-login', async (req, res) => {
     try {
         // Verify the token
         const decoded = jwt.verify(token, process.env.SESSION_SECRET || 'your-secret-key');
+        console.log('[DEBUG] Token verified. Decoded:', decoded);
 
         // Find the user (simulate fetch or just trust query if simple)
         // Ideally we should fetch full user from DB if not implicitly trusted
         const userResult = await db.query('SELECT * FROM users WHERE id = $1', [decoded.id]);
+        console.log('[DEBUG] User lookup count:', userResult.rows.length);
 
         if (userResult.rows.length === 0) {
+            console.error('[DEBUG] User not found for ID:', decoded.id);
             return res.status(401).json({ error: 'User not found' });
         }
 
@@ -101,11 +105,18 @@ router.post('/mobile-login', async (req, res) => {
 
         // Log the user in (Passport)
         req.login(user, (err) => {
-            if (err) return res.status(500).json({ error: 'Login failed' });
+            if (err) {
+                console.error('[DEBUG] req.login failed:', err);
+                return res.status(500).json({ error: 'Login failed' });
+            }
 
             // Save session
             req.session.save((err) => {
-                if (err) return res.status(500).json({ error: 'Session save failed' });
+                if (err) {
+                    console.error('[DEBUG] Session save failed:', err);
+                    return res.status(500).json({ error: 'Session save failed' });
+                }
+                console.log('[DEBUG] Session saved successfully for user:', user.email);
                 res.json({ success: true, user });
             });
         });
