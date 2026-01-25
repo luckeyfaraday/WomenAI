@@ -47,20 +47,13 @@ app.use(cors({
 }));
 
 // Trust proxy for secure cookies behind Render's proxy
-// Trust proxy configuration
-// We need to trust the proxy chain (Vercel -> Render) to ensure req.secure is true
-if (isProduction) {
-  // Trust all proxies (needed for Vercel -> Render setup)
-  app.set('trust proxy', true);
+if (isProduction || process.env.RENDER) {
+  app.set('trust proxy', 1); // Trust the first proxy (Render load balancer)
 }
-
-
 
 // Stripe webhook needs raw body, must come before express.json()
 app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
-
-
 
 // Session configuration
 const pool = new Pool({
@@ -76,11 +69,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
+  proxy: true, // Required for secure cookies behind a proxy
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: true, // Always true for cross-site cookies
-    sameSite: 'none' // Required for cross-site (Vercel -> Render)
+    secure: true, // Required for SameSite: none
+    sameSite: 'none'
   }
 }));
 

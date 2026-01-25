@@ -6,9 +6,15 @@ const jwt = require('jsonwebtoken');
 
 // GET /auth/google - Initiate Google OAuth
 router.get('/google', (req, res, next) => {
-    req.session.returnTo = req.query.returnTo || '/';
-    req.session.isMobile = req.query.platform === 'mobile'; // Store mobile flag
-    next();
+    // Capture the origin to redirect back correctly (local vs production)
+    const origin = req.query.origin || process.env.FRONTEND_URL || 'http://localhost:5173';
+    req.session.returnToOrigin = origin;
+    req.session.returnToPath = req.query.returnTo || '/';
+    req.session.isMobile = req.query.platform === 'mobile';
+
+    req.session.save(() => {
+        next();
+    });
 }, require('passport').authenticate('google', {
     scope: ['profile', 'email']
 }));
@@ -17,29 +23,28 @@ router.get('/google', (req, res, next) => {
 router.get('/google/callback',
     require('passport').authenticate('google', { failureRedirect: '/login' }),
     (req, res) => {
-
-        const returnTo = req.session.returnTo || '/';
+        const origin = req.session.returnToOrigin || process.env.FRONTEND_URL || 'http://localhost:5173';
+        const path = req.session.returnToPath || '/';
         const isMobile = req.session.isMobile;
 
         // Clean up session flags
-        delete req.session.returnTo;
+        delete req.session.returnToOrigin;
+        delete req.session.returnToPath;
         delete req.session.isMobile;
 
         if (isMobile) {
-            // Generate a short-lived token for handoff
             const token = jwt.sign(
                 { id: req.user.id },
-                process.env.SESSION_SECRET || 'your-secret-key',
+                process.env.SESSION_SECRET,
                 { expiresIn: '5m' }
             );
-            // Redirect to the App Scheme
             return res.redirect(`womenai://auth/success?token=${token}`);
         }
 
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
         req.session.save((err) => {
             if (err) console.error("Session Save Error:", err);
-            res.redirect(`${frontendUrl}${returnTo}`);
+            // Dynamic redirect based on where the user came from
+            res.redirect(`${origin}${path}`);
         });
     }
 );

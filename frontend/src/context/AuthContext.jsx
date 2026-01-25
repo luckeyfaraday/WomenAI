@@ -30,6 +30,7 @@ export function AuthProvider({ children }) {
     const login = async () => {
         // Check if running in native app
         const isNative = window.Capacitor?.isNative;
+        const currentOrigin = window.location.origin;
 
         if (isNative) {
             // Use Browser plugin for secure auth
@@ -37,8 +38,8 @@ export function AuthProvider({ children }) {
                 url: `${API_BASE_URL}/auth/google?platform=mobile`
             });
         } else {
-            // Standard Web Redirect
-            window.location.href = `${API_BASE_URL}/auth/google`;
+            // Standard Web Redirect - Pass current origin so backend knows where to return
+            window.location.href = `${API_BASE_URL}/auth/google?origin=${encodeURIComponent(currentOrigin)}`;
         }
     };
 
