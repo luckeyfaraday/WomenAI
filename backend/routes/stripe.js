@@ -185,8 +185,17 @@ router.get('/subscription-status', ensureAuthenticated, async (req, res) => {
 
 // Helper functions
 async function handleCheckoutComplete(session) {
-    const userId = parseInt(session.metadata.user_id);
-    const tier = session.metadata.tier;
+    // Check metadata (API) OR client_reference_id (Payment Link)
+    const userIdStr = session.metadata?.user_id || session.client_reference_id;
+    const userId = userIdStr ? parseInt(userIdStr) : null;
+
+    if (!userId) {
+        console.error("No User ID found in checkout session! (metadata.user_id or client_reference_id missing)");
+        return;
+    }
+
+    // Default tier if not in metadata (Payment Links might not send tier in metadata)
+    const tier = session.metadata?.tier || 'premium';
 
     // Update user's subscription tier
     await query(
