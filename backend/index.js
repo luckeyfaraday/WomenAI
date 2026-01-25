@@ -86,9 +86,6 @@ const ensureAuthenticated = require('./middleware/auth');
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Hybrid Auth (Check Headers if Cookie failed)
-app.use(ensureAuthenticated);
-
 // Health check endpoint (for UptimeRobot and Render)
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
@@ -96,11 +93,11 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/auth', authRoutes);
-app.use('/api/cycles', cyclesRoutes);
-app.use('/api/mood', moodRoutes);
-app.use('/api/safety', safetyRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/stripe', stripeRoutes);
+app.use('/api/cycles', ensureAuthenticated, cyclesRoutes);
+app.use('/api/mood', ensureAuthenticated, moodRoutes);
+app.use('/api/safety', ensureAuthenticated, safetyRoutes);
+app.use('/api/chat', ensureAuthenticated, chatRoutes);
+app.use('/api/stripe', stripeRoutes); // Stripe routes have internal checks or webhooks
 
 // Test Route
 app.get('/api/test', (req, res) => {
