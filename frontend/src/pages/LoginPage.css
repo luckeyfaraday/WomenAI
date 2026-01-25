@@ -75,6 +75,28 @@
     background: #e8f0fe;
 }
 
+.guest-btn {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--color-text-muted);
+    border: 1px solid transparent;
+    padding: 12px 24px;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.guest-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--color-text);
+}
+
 .login-footer {
     margin-top: 32px;
     font-size: 0.8rem;

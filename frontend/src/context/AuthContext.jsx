@@ -66,6 +66,20 @@ export function AuthProvider({ children }) {
         }
     };
 
+    const loginAsGuest = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.post(`${API_BASE_URL}/auth/guest`, {}, { withCredentials: true });
+            if (response.data.success) {
+                setUser(response.data.user);
+            }
+        } catch (error) {
+            console.error('Guest login failed:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const logout = async () => {
         try {
             await axios.get(`${API_BASE_URL}/auth/logout`, {
@@ -112,7 +126,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, logout, checkAuth }}>
+        <AuthContext.Provider value={{ user, loading, login, loginAsGuest, logout, checkAuth }}>
             {children}
         </AuthContext.Provider>
     );

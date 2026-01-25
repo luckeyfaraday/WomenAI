@@ -116,4 +116,22 @@ router.post('/mobile-login', async (req, res) => {
     }
 });
 
+// POST /auth/guest - Create a guest session
+router.post('/guest', (req, res) => {
+    const guestUser = {
+        id: -1, // Use -1 for guest ID
+        name: 'Guest',
+        email: 'guest@womenai.local',
+        picture: null,
+        is_guest: true
+    };
+
+    req.login(guestUser, (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Login failed' });
+        }
+        res.json({ success: true, user: guestUser });
+    });
+});
+
 module.exports = router;
