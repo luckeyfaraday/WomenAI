@@ -91,7 +91,7 @@ router.post('/mobile-login', async (req, res) => {
 
         // Find the user (simulate fetch or just trust query if simple)
         // Ideally we should fetch full user from DB if not implicitly trusted
-        const userResult = await db.query('SELECT * FROM users WHERE google_id = $1', [decoded.id]);
+        const userResult = await db.query('SELECT * FROM users WHERE id = $1', [decoded.id]);
 
         if (userResult.rows.length === 0) {
             return res.status(401).json({ error: 'User not found' });
