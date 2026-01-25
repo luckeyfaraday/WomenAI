@@ -80,11 +80,14 @@ app.use(session({
   }
 }));
 
+const ensureAuthenticated = require('./middleware/auth');
+
 // Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+// Hybrid Auth (Check Headers if Cookie failed)
+app.use(ensureAuthenticated);
 
 // Health check endpoint (for UptimeRobot and Render)
 app.get('/health', (req, res) => {
