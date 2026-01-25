@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const ensureAuthenticated = require('../middleware/auth'); // Import the hybrid check
 
 const jwt = require('jsonwebtoken');
 
@@ -63,14 +64,16 @@ router.get('/logout', (req, res) => {
     });
 });
 
-// GET /auth/user - Get current user
-router.get('/user', (req, res) => {
-    if (req.isAuthenticated()) {
+// GET /auth/user - Get current user (Protected by Hybrid Auth)
+router.get('/user', ensureAuthenticated, (req, res) => {
+    // Check if Passport (Cookie) OR Hybrid (Token/Guest) attached a user
+    if (req.user) {
         res.json({
             id: req.user.id,
             email: req.user.email,
             name: req.user.name,
-            picture: req.user.picture
+            picture: req.user.picture,
+            is_guest: req.user.is_guest || false
         });
     } else {
         res.status(401).json({ error: 'Not authenticated' });
