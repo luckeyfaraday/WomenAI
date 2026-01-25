@@ -73,8 +73,9 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: isProduction, // true for production (HTTPS), false for development (HTTP)
-    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-domain prod, 'lax' for execution on localhost
+    // Force secure/none if we are on Render OR in production
+    secure: isProduction || !!process.env.RENDER, 
+    sameSite: (isProduction || !!process.env.RENDER) ? 'none' : 'lax', 
     partitioned: true // Required for Chrome/Firefox to allow 3rd party cookies (CHIPS)
   }
 }));
