@@ -17,9 +17,11 @@ export function AuthProvider({ children }) {
             const token = params.get('token');
 
             if (token) {
+                console.log("Token detected in URL, attempting exchange...", token);
                 try {
                     // Exchange token for session cookie
-                    await axios.post(`${API_BASE_URL}/auth/mobile-login`, { token }, { withCredentials: true });
+                    const res = await axios.post(`${API_BASE_URL}/auth/mobile-login`, { token }, { withCredentials: true });
+                    console.log("Token exchange successful:", res.data);
 
                     // Clear token from URL
                     window.history.replaceState({}, document.title, window.location.pathname);
@@ -28,6 +30,7 @@ export function AuthProvider({ children }) {
                 }
             }
 
+            console.log("Checking auth status...");
             await checkAuth();
         };
 
