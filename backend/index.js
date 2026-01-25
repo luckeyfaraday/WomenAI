@@ -79,8 +79,8 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: isProduction, // Still requires HTTPS
-    sameSite: 'lax' // Proxy makes it Same-Origin, so 'lax' is better/safer than 'none'
+    secure: true, // Always true for cross-site cookies
+    sameSite: 'none' // Required for cross-site (Vercel -> Render)
   }
 }));
 
