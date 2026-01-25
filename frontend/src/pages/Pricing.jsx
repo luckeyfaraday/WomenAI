@@ -2,29 +2,22 @@ import { Check } from 'lucide-react';
 import axios from 'axios';
 import API_BASE_URL from '../config';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 import './Pricing.css';
 
 export default function Pricing() {
+    const { user } = useAuth();
     const [loading, setLoading] = useState(false);
 
-    const handleUpgrade = async (priceId, tier) => {
-        try {
-            setLoading(true);
-            const response = await axios.post(
-                `${API_BASE_URL}/api/stripe/create-checkout-session`,
-                { priceId, tier },
-                { withCredentials: true }
-            );
-
-            if (response.data.url) {
-                window.location.href = response.data.url;
-            }
-        } catch (error) {
-            console.error('Checkout error:', error);
-            alert('Failed to start checkout. Please try again or login first.');
-        } finally {
-            setLoading(false);
+    const handleUpgrade = () => {
+        if (!user) {
+            alert('Please login to upgrade.');
+            return;
         }
+
+        // Use Stripe Payment Link with client_reference_id for webhook matching
+        const paymentLink = `https://buy.stripe.com/bJe4gy1yk2Bj5nTdte4wM01?client_reference_id=${user.id}`;
+        window.location.href = paymentLink;
     };
 
     return (
@@ -80,7 +73,7 @@ export default function Pricing() {
 
                     <button
                         className="btn btn-primary"
-                        onClick={() => handleUpgrade('PRICE_ID_HERE', 'premium')}
+                        onClick={handleUpgrade}
                         disabled={loading}
                         style={{ width: '100%' }}
                     >
