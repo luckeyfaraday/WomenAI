@@ -32,22 +32,26 @@ router.get('/google/callback',
         delete req.session.returnToPath;
         delete req.session.isMobile;
 
+        // Unified Token-Based Auth Flow for Web & Mobile
+        // This solves cross-site cookie partitioning issues by handing off the session creation
+        // to the frontend (Site A) calling the backend (Site B) via XHR.
+
+        const token = jwt.sign(
+            { id: req.user.id },
+            process.env.SESSION_SECRET,
+            { expiresIn: '5m' }
+        );
+
         if (isMobile) {
-            const token = jwt.sign(
-                { id: req.user.id },
-                process.env.SESSION_SECRET,
-                { expiresIn: '5m' }
-            );
             return res.redirect(`womenai://auth/success?token=${token}`);
         }
 
-        req.session.save((err) => {
-            if (err) console.error("Session Save Error:", err);
-            // Dynamic redirect based on where the user came from
-            res.redirect(`${origin}${path}`);
-        });
+        // For Web, redirect to frontend with token
+        // Frontend will grab token and call /auth/mobile-login (exchange)
+        res.redirect(`${origin}${path}?token=${token}`);
     }
 );
+
 
 // GET /auth/logout - Logout user
 router.get('/logout', (req, res) => {

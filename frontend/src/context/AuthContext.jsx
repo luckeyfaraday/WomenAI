@@ -11,7 +11,27 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        checkAuth();
+        const initAuth = async () => {
+            // Check for token in URL (Web Handoff)
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+
+            if (token) {
+                try {
+                    // Exchange token for session cookie
+                    await axios.post(`${API_BASE_URL}/auth/mobile-login`, { token }, { withCredentials: true });
+
+                    // Clear token from URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                } catch (err) {
+                    console.error("Token Exchange Failed:", err);
+                }
+            }
+
+            await checkAuth();
+        };
+
+        initAuth();
     }, []);
 
     const checkAuth = async () => {
