@@ -1,48 +1,9 @@
-import { useState, useEffect } from 'react';
-import { LogIn, LogOut, User } from 'lucide-react';
-import axios from 'axios';
-import API_BASE_URL from '../config';
+import { LogIn, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import './LoginButton.css';
 
 export default function LoginButton() {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        checkAuth();
-    }, []);
-
-    const checkAuth = async () => {
-        try {
-            const response = await axios.get(`${API_BASE_URL}/auth/user`, {
-                withCredentials: true
-            });
-            setUser(response.data);
-        } catch (error) {
-            setUser(null);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleLogin = () => {
-        window.location.href = `${API_BASE_URL}/auth/google`;
-    };
-
-    const handleLogout = async () => {
-        try {
-            await axios.get(`${API_BASE_URL}/auth/logout`, {
-                withCredentials: true
-            });
-            setUser(null);
-        } catch (error) {
-            console.error('Logout error:', error);
-        }
-    };
-
-    if (loading) {
-        return <div className="login-loading">...</div>;
-    }
+    const { user, login, logout } = useAuth();
 
     if (user) {
         return (
@@ -58,7 +19,7 @@ export default function LoginButton() {
                     />
                 )}
                 <span className="user-name">{user.name}</span>
-                <button onClick={handleLogout} className="btn btn-secondary logout-btn">
+                <button onClick={logout} className="btn btn-secondary logout-btn">
                     <LogOut size={16} />
                     Logout
                 </button>
@@ -67,7 +28,7 @@ export default function LoginButton() {
     }
 
     return (
-        <button onClick={handleLogin} className="btn btn-primary login-btn">
+        <button onClick={login} className="btn btn-primary login-btn">
             <LogIn size={16} />
             Sign in with Google
         </button>
