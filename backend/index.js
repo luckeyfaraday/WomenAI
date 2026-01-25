@@ -74,7 +74,8 @@ app.use(session({
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
     secure: isProduction, // true for production (HTTPS), false for development (HTTP)
-    sameSite: isProduction ? 'none' : 'lax' // 'none' for cross-domain prod, 'lax' for execution on localhost
+    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-domain prod, 'lax' for execution on localhost
+    partitioned: true // Required for Chrome/Firefox to allow 3rd party cookies (CHIPS)
   }
 }));
 
