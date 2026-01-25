@@ -55,8 +55,8 @@ For medical concerns: "While I can provide general information, I'm not a doctor
 Be helpful, supportive, and always prioritize the user's wellbeing.`;
 
 // POST /api/chat - Handle chat messages (with rate limiting for free tier)
-// POST /api/chat - Handle chat messages (Open access for testing)
-router.post('/', async (req, res) => {
+// POST /api/chat - Handle chat messages (with rate limiting for free tier: 50 messages/day)
+router.post('/', checkUsageLimit('chat_messages', 50), async (req, res) => {
     const { message, history } = req.body;
 
     if (!message) {
