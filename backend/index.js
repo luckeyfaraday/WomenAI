@@ -73,8 +73,8 @@ app.use(session({
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     httpOnly: true,
-    secure: true, // Required for SameSite: none
-    sameSite: 'none'
+    secure: isProduction, // true for production (HTTPS), false for development (HTTP)
+    sameSite: isProduction ? 'none' : 'lax' // 'none' for cross-domain prod, 'lax' for execution on localhost
   }
 }));
 
