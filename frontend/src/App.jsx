@@ -7,7 +7,6 @@ import Track from './pages/Track';
 import Safety from './pages/Safety';
 import Pricing from './pages/Pricing';
 import Account from './pages/Account';
-import DesignSystem from './pages/DesignSystem';
 import './App.css';
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
             <Route path="safety" element={<Safety />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="account" element={<Account />} />
-            <Route path="design" element={<DesignSystem />} />
           </Route>
         </Routes>
       </BrowserRouter>

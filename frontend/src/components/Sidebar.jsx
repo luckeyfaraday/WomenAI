@@ -29,10 +29,7 @@ export default function Sidebar() {
                     <Settings size={20} />
                     <span>Settings</span>
                 </NavLink>
-                <NavLink to="/design" className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}>
-                    <Smile size={20} />
-                    <span>Design System</span>
-                </NavLink>
+
             </nav>
 
             <div className="sidebar-footer">
