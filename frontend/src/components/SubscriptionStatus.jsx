@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Crown, Settings } from 'lucide-react';
+import { Crown, Settings, Zap } from 'lucide-react';
 import axios from 'axios';
 import API_BASE_URL from '../config';
 import './SubscriptionStatus.css';
@@ -48,24 +48,37 @@ export default function SubscriptionStatus() {
 
     const tier = subscription?.tier || 'free';
     const isPremium = tier === 'premium';
+    const isPro = tier === 'pro';
+    const isPaid = isPremium || isPro;
+
+    const tierConfig = {
+        free: { icon: Settings, badge: '🌱 Free', class: '' },
+        premium: { icon: Crown, badge: '👑 Premium', class: 'premium' },
+        pro: { icon: Zap, badge: '⚡ Pro', class: 'pro' }
+    };
+
+    const config = tierConfig[tier] || tierConfig.free;
+    const TierIcon = config.icon;
 
     return (
         <div className="card subscription-status">
             <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                {isPremium ? <Crown className="icon-primary" /> : <Settings className="icon-primary" />}
+                <TierIcon className="icon-primary" />
                 Subscription
             </h3>
 
             <div className="subscription-badge-container">
-                <div className={`subscription-badge ${tier}`}>
-                    {tier === 'premium' ? '👑 Premium' : '🌱 Free'}
+                <div className={`subscription-badge ${config.class}`}>
+                    {config.badge}
                 </div>
             </div>
 
-            {isPremium ? (
+            {isPaid ? (
                 <>
                     <p style={{ color: 'var(--color-text-muted)', marginTop: 'var(--space-sm)' }}>
-                        You have unlimited access to all WomenAI features
+                        {isPro 
+                            ? 'You have full Pro access with our best AI model' 
+                            : 'You have unlimited access to all WomenAI features'}
                     </p>
                     {subscription.currentPeriodEnd && (
                         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: 'var(--space-xs)' }}>
@@ -87,12 +100,12 @@ export default function SubscriptionStatus() {
                     </p>
                     <ul style={{ margin: 'var(--space-md) 0', paddingLeft: 'var(--space-md)', color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
                         <li>Unlimited AI chat</li>
-                        <li>Unlimited tracking</li>
+                        <li>Better AI models</li>
                         <li>Advanced analytics</li>
                         <li>Data export</li>
                     </ul>
                     <a href="/pricing" className="btn btn-primary" style={{ width: '100%' }}>
-                        Upgrade to Premium
+                        View Plans
                     </a>
                 </>
             )}

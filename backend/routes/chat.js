@@ -55,8 +55,8 @@ For medical concerns: "While I can provide general information, I'm not a doctor
 Be helpful, supportive, and always prioritize the user's wellbeing.`;
 
 // POST /api/chat - Handle chat messages (with rate limiting for free tier)
-// POST /api/chat - Handle chat messages (with rate limiting for free tier: 50 messages/day)
-router.post('/', checkUsageLimit('chat_messages', 50), async (req, res) => {
+// POST /api/chat - Handle chat messages (with rate limiting for free tier: 10 messages/day)
+router.post('/', checkUsageLimit('chat_messages', 10), async (req, res) => {
     const { message, history } = req.body;
 
     if (!message) {
@@ -93,12 +93,25 @@ router.post('/', checkUsageLimit('chat_messages', 50), async (req, res) => {
         // Add current user message
         messages.push({ role: 'user', content: message });
 
+        // Select model and max_tokens based on user tier
+        const userTier = req.user?.subscription_tier || 'free';
+        let model = 'llama-3.1-8b-instant'; // Free tier: fast, basic model
+        let maxTokens = 300;
+
+        if (userTier === 'premium') {
+            model = 'llama-3.3-70b-versatile'; // Premium: balanced model
+            maxTokens = 500;
+        } else if (userTier === 'pro') {
+            model = 'llama-3.3-70b-specdec'; // Pro: best model with speculative decoding
+            maxTokens = 1000;
+        }
+
         // Call Groq API
         const completion = await groq.chat.completions.create({
             messages,
-            model: 'llama-3.3-70b-versatile', // Fast and capable model
+            model,
             temperature: 0.7,
-            max_tokens: 500,
+            max_tokens: maxTokens,
             top_p: 1,
             stream: false
         });

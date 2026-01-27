@@ -2,7 +2,7 @@ const { query } = require('../db');
 
 // Check if user has required subscription tier
 const requireTier = (minimumTier) => {
-    const tierHierarchy = { free: 0, premium: 1 };
+    const tierHierarchy = { free: 0, premium: 1, pro: 2 };
 
     return async (req, res, next) => {
         try {
@@ -41,8 +41,8 @@ const checkUsageLimit = (resourceType, dailyLimit) => {
 
             const userTier = req.user.subscription_tier || 'free';
 
-            // Premium users have unlimited access
-            if (userTier === 'premium') {
+            // Premium and Pro users have unlimited access
+            if (userTier === 'premium' || userTier === 'pro') {
                 return next();
             }
 
