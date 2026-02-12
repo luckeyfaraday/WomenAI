@@ -1,6 +1,6 @@
-# WomenAI Mobile App Strategy Evaluation
+# ClaraAI Mobile App Strategy Evaluation
 
-**Goal:** Determine the most efficient path to launch a WomenAI mobile application.
+**Goal:** Determine the most efficient path to launch a ClaraAI mobile application.
 **Current Stack:** React 19, Vite, Tailwind CSS (assumed), Node.js Backend.
 
 ---

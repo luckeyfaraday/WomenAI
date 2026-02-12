@@ -1,4 +1,4 @@
-# WomenAI Twitter - Initial Content
+# ClaraAI Twitter - Initial Content
 
 ## Twitter Bio (160 chars max)
 
@@ -16,7 +16,7 @@ Women's health made simple with AI 💜 | Period insights • Mental wellness �
 ## Initial Tweet Thread (Launch Announcement)
 
 ### Tweet 1 (Main Announcement)
-🌸 Introducing WomenAI – your personal AI health companion designed by women, for women.
+🌸 Introducing ClaraAI – your personal AI health companion designed by women, for women.
 
 We're building something different: an AI that actually understands women's health, respects your privacy, and puts YOU first.
 
@@ -31,8 +31,8 @@ Let's be real: most health apps either:
 
 We're changing that.
 
-### Tweet 3 (What WomenAI Does)
-WomenAI brings together:
+### Tweet 3 (What ClaraAI Does)
+ClaraAI brings together:
 
 🩸 Smart period tracking with actual insights
 💭 Mental wellness support that gets it
@@ -58,7 +58,7 @@ Interested? Drop a 💜 below or DM us.
 
 Let's build women's health tech that actually works for us.
 
-#WomenAI #WomensHealth #HealthTech
+#ClaraAI #WomensHealth #HealthTech
 
 ---
 
@@ -67,7 +67,7 @@ Let's build women's health tech that actually works for us.
 ### Educational Thread: Period Tracking
 Did you know your cycle affects more than just your period? 🧵
 
-WomenAI tracks patterns you didn't even know existed:
+ClaraAI tracks patterns you didn't even know existed:
 • Energy levels throughout your cycle
 • Mood changes and what drives them  
 • Best times for tough conversations
@@ -80,10 +80,10 @@ What's the ONE thing you wish health apps actually understood about women's heal
 
 We're listening. 👂💜
 
-(And yes, we're building it into WomenAI)
+(And yes, we're building it into ClaraAI)
 
 ### Mental Wellness Tweet
-Bad mental health day? WomenAI gets it.
+Bad mental health day? ClaraAI gets it.
 
 No toxic positivity. No "just meditate."
 
@@ -96,7 +96,7 @@ Real support:
 You deserve better than "self-care Sunday" content.
 
 ### Safety Resources Tweet
-WomenAI includes instant access to:
+ClaraAI includes instant access to:
 
 🆘 Emergency contacts
 📍 Safe location sharing
@@ -113,7 +113,7 @@ Your well-being matters, and we've got your back.
 
 Yes. 😌
 
-WomenAI is trained on women's health research, not bro-science.
+ClaraAI is trained on women's health research, not bro-science.
 
 It knows:
 • Hormones affect EVERYTHING  
@@ -142,10 +142,10 @@ Quick poll: What matters MOST to you in a health app?
 
 Google: you're dying
 Random health app: track your water intake! ✨
-WomenAI: let's actually talk about what's going on
+ClaraAI: let's actually talk about what's going on
 
 ### Behind-the-Scenes Tweet  
-Building WomenAI feels different.
+Building ClaraAI feels different.
 
 Every feature we ship, we ask: "Would this actually help my sister? My best friend? Me?"
 
@@ -156,7 +156,7 @@ Women's health deserves that standard.
 ### Testimonial/Beta User Tweet
 "Finally, a health app that doesn't make me feel like I'm overreacting" – Beta tester
 
-This. This is why we're building WomenAI. 💜
+This. This is why we're building ClaraAI. 💜
 
 ---
 
@@ -192,7 +192,7 @@ This. This is why we're building WomenAI. 💜
 ## Hashtag Strategy
 
 **Primary:**
-#WomenAI #WomensHealth #HealthTech
+#ClaraAI #WomensHealth #HealthTech
 
 **Secondary:**
 #PeriodTracking #MentalWellness #WomenInTech #FemTech #HealthApp
@@ -230,7 +230,7 @@ This. This is why we're building WomenAI. 💜
 "We're opening beta spots very soon! DM us your email and we'll add you to the list 💜"
 
 **When someone shares their health struggle:**
-"Thank you for sharing this. You're not alone, and this is exactly why we're building WomenAI. 💜"
+"Thank you for sharing this. You're not alone, and this is exactly why we're building ClaraAI. 💜"
 
 **When someone asks about privacy:**
 "Your data stays YOURS. End-to-end privacy, no selling data, no exceptions. Happy to answer any specific questions!"

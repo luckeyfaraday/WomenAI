@@ -1,4 +1,4 @@
-# WomenAI - How to Access
+# ClaraAI - How to Access
 
 ## Two Separate Pages
 
@@ -28,7 +28,7 @@ npm run dev
 # Visit http://localhost:5173
 ```
 
-**Purpose:** The actual WomenAI application with cycle tracking, mood logging, AI chat, etc.
+**Purpose:** The actual ClaraAI application with cycle tracking, mood logging, AI chat, etc.
 
 **⚠️ IMPORTANT:** Do NOT open `frontend/index.html` directly in browser. It will cause CORS errors. Always use the dev server.
 

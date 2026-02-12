@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">WomenAI</string>
-    <string name="title_activity_main">WomenAI</string>
+    <string name="app_name">ClaraAI</string>
+    <string name="title_activity_main">ClaraAI</string>
     <string name="package_name">com.luckeyfaraday.womenai</string>
     <string name="custom_url_scheme">com.luckeyfaraday.womenai</string>
 </resources>

@@ -1,6 +1,6 @@
-# WomenAI Project: PostgreSQL Database Setup Guide
+# ClaraAI Project: PostgreSQL Database Setup Guide
 
-This document provides instructions for setting up your PostgreSQL database for the WomenAI backend, including troubleshooting common connection issues.
+This document provides instructions for setting up your PostgreSQL database for the ClaraAI backend, including troubleshooting common connection issues.
 
 ## 1. Install PostgreSQL
 
@@ -11,7 +11,7 @@ If you don't already have PostgreSQL installed on your system, you'll need to do
 
 ## 2. Create a Database
 
-After installing PostgreSQL, you need to create a dedicated database for the WomenAI project. You can do this using a tool like `psql` (PostgreSQL's command-line client) or a GUI tool like pgAdmin.
+After installing PostgreSQL, you need to create a dedicated database for the ClaraAI project. You can do this using a tool like `psql` (PostgreSQL's command-line client) or a GUI tool like pgAdmin.
 
 **Using `psql` (Command Line):**
 
@@ -30,7 +30,7 @@ After installing PostgreSQL, you need to create a dedicated database for the Wom
 
 ## 3. Configure Environment Variables (`.env` file)
 
-The WomenAI backend connects to your PostgreSQL database using a connection string defined in an environment variable.
+The ClaraAI backend connects to your PostgreSQL database using a connection string defined in an environment variable.
 
 1.  Navigate to your backend directory: `projects/WomenAI/backend`
 2.  Create a new file named `.env` (if it doesn't already exist).

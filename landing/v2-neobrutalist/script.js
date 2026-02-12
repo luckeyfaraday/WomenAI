@@ -1,2 +1,2 @@
 // Simple script for neo-brutalist page
-console.log('WomenAI - Neo-Brutalist Design Loaded');
+console.log('ClaraAI - Neo-Brutalist Design Loaded');

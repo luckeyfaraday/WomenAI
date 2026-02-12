@@ -6,9 +6,9 @@
 
 ---
 
-Hi, I'm building **WomenAI**.
+Hi, I'm building **ClaraAI**.
 
-**The Thesis:** General purpose LLMs are broad but shallow. The next big opportunity is **Vertical AI** that owns the context. WomenAI is a specialized companion that integrates hard utility (health data) with empathetic intelligence.
+**The Thesis:** General purpose LLMs are broad but shallow. The next big opportunity is **Vertical AI** that owns the context. ClaraAI is a specialized companion that integrates hard utility (health data) with empathetic intelligence.
 
 **The Product:**
 *   **Integrated Health:** Native menstrual cycle & symptom tracking. The AI understands where you are in your cycle and adjusts advice/support accordingly.

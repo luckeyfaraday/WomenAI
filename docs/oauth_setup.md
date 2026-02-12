@@ -8,12 +8,12 @@
 4. Click **Create Credentials** → **OAuth 2.0 Client ID**
 5. Configure consent screen if prompted:
    - User Type: External
-   - App name: WomenAI
+   - App name: ClaraAI
    - User support email: your email
    - Developer contact: your email
 6. Create OAuth Client ID:
    - Application type: **Web application**
-   - Name: WomenAI Local Development
+   - Name: ClaraAI Local Development
    - Authorized redirect URIs: `http://localhost:3000/auth/google/callback`
 7. Copy **Client ID** and **Client Secret**
 

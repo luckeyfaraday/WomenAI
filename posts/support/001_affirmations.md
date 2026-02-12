@@ -8,7 +8,7 @@ Your feelings are valid. Your struggles are real. And you deserve support.
 
 We're here for you, always. 🌸
 
-#WomenAI #MentalHealth #YouAreEnough
+#ClaraAI #MentalHealth #YouAreEnough
 
 ---
 
@@ -30,7 +30,7 @@ Talk to our AI, log your mood, or just know that tomorrow is a new day.
 
 You've got this. 💗
 
-#MentalWellness #Support #WomenAI
+#MentalWellness #Support #ClaraAI
 
 ---
 
@@ -50,7 +50,7 @@ Whether you're tracking your cycle, managing your mood, or need safety resources
 
 24/7. No judgment. Just support.
 
-#WomenAI #Support #MentalHealth
+#ClaraAI #Support #MentalHealth
 
 ---
 

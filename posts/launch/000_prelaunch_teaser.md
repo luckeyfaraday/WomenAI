@@ -17,7 +17,7 @@ Launching soon. Follow for updates.
 
 ---
 
-**Media Suggestion:** Teaser graphic with WomenAI logo and "Coming Soon" text on gradient background
+**Media Suggestion:** Teaser graphic with ClaraAI logo and "Coming Soon" text on gradient background
 
 **Best Time:** Tuesday or Wednesday, 10 AM - 2 PM
 
@@ -26,7 +26,7 @@ Launching soon. Follow for updates.
 **Engagement Strategy:** 
 - Pin this tweet to profile
 - Respond to all comments personally
-- Use in bio: "Building WomenAI - launching soon 🌸"
+- Use in bio: "Building ClaraAI - launching soon 🌸"
 
 ---
 
@@ -42,7 +42,7 @@ An AI companion for women's health:
 
 Because your wellbeing matters.
 
-WomenAI - Coming Soon
+ClaraAI - Coming Soon
 
 #WomensHealth #FemTech
 

@@ -1,7 +1,7 @@
-# WomenAI Project
+# ClaraAI Project
 
 ## Overview
-WomenAI is an AI assistant specifically designed to cater to the needs, preferences, and challenges faced by women. The project's initial focus is on delivering high-impact, feasible features in the domains of Health and Safety. The core value proposition is to provide a general-purpose AI assistant optimized for emotional support and addressing woman-specific problems.
+ClaraAI is an AI assistant specifically designed to cater to the needs, preferences, and challenges faced by women. The project's initial focus is on delivering high-impact, feasible features in the domains of Health and Safety. The core value proposition is to provide a general-purpose AI assistant optimized for emotional support and addressing woman-specific problems.
 
 ## Architecture
 - **/concept.md**: The original ideation document outlining the project's vision, goals, and MVP features.

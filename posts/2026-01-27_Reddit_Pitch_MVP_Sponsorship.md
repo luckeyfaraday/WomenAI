@@ -20,7 +20,7 @@ Reply to investor/sponsor offering $3,000 for MVP-ready startups stuck in 0→1 
 
 **Country:** France
 
-**Product:** WomenAI — an AI health assistant designed specifically for women.
+**Product:** ClaraAI — an AI health assistant designed specifically for women.
 
 **MVP Link:** https://womenai.vercel.app
 
@@ -30,7 +30,7 @@ General-purpose AI assistants aren't built with women's health in mind. When a w
 
 Women's health is deeply personal, often stigmatized, and chronically under-researched. Many women feel uncomfortable discussing these topics with doctors, let alone AI that treats them like edge cases.
 
-WomenAI is built from the ground up to understand:
+ClaraAI is built from the ground up to understand:
 - Menstrual cycle tracking and predictions
 - Mental wellness support (mood tracking, guided support)
 - Safety resources and crisis information
@@ -61,7 +61,7 @@ This isn't about survival. It's about acceleration. The product works. I need to
 ## Strategy Notes
 
 **Tone:** Direct, founder-to-founder, no fluff
-**Goal:** Secure sponsorship/investment for WomenAI
+**Goal:** Secure sponsorship/investment for ClaraAI
 **Subreddit:** r/startups or similar
 
 **Key differentiator:** MVP is already live and functional — not vaporware

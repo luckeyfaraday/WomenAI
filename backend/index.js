@@ -101,11 +101,11 @@ app.use('/api/stripe', stripeRoutes); // Stripe routes have internal checks or w
 
 // Test Route
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Hello from the WomenAI backend! Communication successful.' });
+  res.json({ message: 'Hello from the ClaraAI backend! Communication successful.' });
 });
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the WomenAI backend!');
+  res.send('Welcome to the ClaraAI backend!');
 });
 
 app.listen(port, () => {

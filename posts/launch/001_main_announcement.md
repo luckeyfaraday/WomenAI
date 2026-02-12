@@ -1,6 +1,6 @@
 # Launch Announcement
 
-🌸 Introducing WomenAI - Your free AI companion for women's health & wellness!
+🌸 Introducing ClaraAI - Your free AI companion for women's health & wellness!
 
 ✨ Track your cycle
 💜 Log your moods
@@ -9,11 +9,11 @@
 
 Because your wellbeing matters. Always here for you.
 
-#WomensHealth #AIforGood #Launch #WomenAI
+#WomensHealth #AIforGood #Launch #ClaraAI
 
 ---
 
-**Media Suggestion**: Gradient graphic with WomenAI logo and key features icons
+**Media Suggestion**: Gradient graphic with ClaraAI logo and key features icons
 
 **Best Time**: Tuesday or Wednesday, 10 AM - 2 PM
 

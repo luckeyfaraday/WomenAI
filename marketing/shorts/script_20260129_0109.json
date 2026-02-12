@@ -1,0 +1,55 @@
+{
+    "session_id": "5b93aa09-c4c2-4985-b0b9-2fbe1f379e2e",
+    "response": "```json\n{\n  \"title\": \"Your Period App is Selling Your Data. So I Built a Better One.\",\n  \"script\": {\n    \"0-5s\": \"Your period app is selling your data. Seriously. Most of them are.\",\n    \"5-15s\": \"Your most personal health information is being packaged and sold to the highest bidder. It's invasive, insecure, and frankly, it's lazy tech.\",\n    \"15-45s\": \"So today, I started building a privacy-first alternative for WomenAI. All data lives and is processed on your device. Zero cloud. Zero tracking. I mapped out the core data models for cycles and symptoms. Then, I built a simple, local predictive model using a time-series analysis to forecast future cycles. No network requests with your personal data, ever. The entire logic is self-contained.\",\n    \"45-55s\": \"This shouldn't be revolutionary, it should be the standard. We're building WomenAI in the open. Join the build. The repo is in the bio.\"\n  },\n  \"visual_cues\": {\n    \"0-5s\": \"Fast-paced, text-on-screen hook. Glitchy, corrupted UI of a generic-looking period tracker app.\",\n    \"5-15s\": \"Quick cuts of stock footage representing data servers, charts, and money exchanging hands, overlaid with text like 'SOLD' and 'AD-TARGETING'.\",\n    \"15-45s\": \"High-speed screen recording of code being written. Focus on Python data classes (Cycle, Symptom, Event). Show a flash of a pandas DataFrame or a simple statistical model function. Use a dark terminal aesthetic. Overlay text like 'ON-DEVICE PROCESSING' and 'NO DATA LEAKS'. The visuals should look complex and fast, like a 'hacker' scene.\",\n    \"45-55s\": \"End on a clean, minimalist shot of the WomenAI GitHub repository page on a laptop. The project name is clearly visible. A final text overlay: 'WomenAI: Link in Bio'.\"\n  }\n}\n```",
+    "stats": {
+        "models": {
+            "gemini-2.5-flash-lite": {
+                "api": {
+                    "totalRequests": 1,
+                    "totalErrors": 0,
+                    "totalLatencyMs": 50347
+                },
+                "tokens": {
+                    "prompt": 19800,
+                    "candidates": 76,
+                    "total": 20233,
+                    "cached": 0,
+                    "thoughts": 357,
+                    "tool": 0
+                }
+            },
+            "gemini-2.5-pro": {
+                "api": {
+                    "totalRequests": 1,
+                    "totalErrors": 0,
+                    "totalLatencyMs": 68952
+                },
+                "tokens": {
+                    "prompt": 28502,
+                    "candidates": 464,
+                    "total": 30067,
+                    "cached": 0,
+                    "thoughts": 1101,
+                    "tool": 0
+                }
+            }
+        },
+        "tools": {
+            "totalCalls": 0,
+            "totalSuccess": 0,
+            "totalFail": 0,
+            "totalDurationMs": 0,
+            "totalDecisions": {
+                "accept": 0,
+                "reject": 0,
+                "modify": 0,
+                "auto_accept": 0
+            },
+            "byName": {}
+        },
+        "files": {
+            "totalLinesAdded": 0,
+            "totalLinesRemoved": 0
+        }
+    }
+}

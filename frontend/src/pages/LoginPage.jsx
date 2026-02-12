@@ -8,7 +8,7 @@ export default function LoginPage() {
         <div className="login-container">
             <div className="login-card">
                 <div className="login-logo">🌸</div>
-                <h1 className="login-title">Welcome to WomenAI</h1>
+                <h1 className="login-title">Welcome to ClaraAI</h1>
                 <p className="login-subtitle">
                     Your personal AI companion for health, wellness, and safety.
                 </p>

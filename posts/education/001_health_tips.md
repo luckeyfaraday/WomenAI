@@ -9,7 +9,7 @@ Did you know? Tracking your cycle can help you:
 
 Knowledge is power 💪🌸
 
-#WomenAI #HealthTips #WomensHealth
+#ClaraAI #HealthTips #WomensHealth
 
 ---
 
@@ -31,7 +31,7 @@ Tracking it can reveal:
 ✨ What helps you feel better
 ✨ When to ask for support
 
-Start logging today with WomenAI.
+Start logging today with ClaraAI.
 
 #MentalHealth #WellnessTips
 

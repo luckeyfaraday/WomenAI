@@ -1,4 +1,4 @@
-# Groq API Setup for WomenAI
+# Groq API Setup for ClaraAI
 
 ## Getting Your API Key
 

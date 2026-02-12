@@ -1,6 +1,6 @@
 # Connecting Android APK to Backend
 
-This guide explains how to ensure your WomenAI Android app can communicate with the backend server in both Development and Production environments.
+This guide explains how to ensure your ClaraAI Android app can communicate with the backend server in both Development and Production environments.
 
 ## The Problem: "Localhost"
 
@@ -74,7 +74,7 @@ To allow HTTP traffic to your local computer:
 <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
-    android:label="WomenAI"
+    android:label="ClaraAI"
     android:usesCleartextTraffic="true"  <!-- ADD THIS LINE -->
     ... >
 ```

@@ -78,7 +78,7 @@ export default function SubscriptionStatus() {
                     <p style={{ color: 'var(--color-text-muted)', marginTop: 'var(--space-sm)' }}>
                         {isPro 
                             ? 'You have full Pro access with our best AI model' 
-                            : 'You have unlimited access to all WomenAI features'}
+                            : 'You have unlimited access to all ClaraAI features'}
                     </p>
                     {subscription.currentPeriodEnd && (
                         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: 'var(--space-xs)' }}>

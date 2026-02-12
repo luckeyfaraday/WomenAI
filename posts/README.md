@@ -1,6 +1,6 @@
-# WomenAI Social Media Posts
+# ClaraAI Social Media Posts
 
-This folder contains pre-written social media content for WomenAI's Twitter/X account.
+This folder contains pre-written social media content for ClaraAI's Twitter/X account.
 
 ## Folder Structure
 

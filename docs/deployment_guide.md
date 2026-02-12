@@ -1,6 +1,6 @@
-# WomenAI Free Hosting Deployment Guide
+# ClaraAI Free Hosting Deployment Guide
 
-**Goal**: Deploy WomenAI to production for $0/month using Vercel + Render + Neon free tiers.
+**Goal**: Deploy ClaraAI to production for $0/month using Vercel + Render + Neon free tiers.
 
 **Total Time**: ~30 minutes
 
@@ -26,7 +26,7 @@
 
 ### 1.2 Create Database
 1. Click **"New Project"**
-2. **Project Name**: `WomenAI`
+2. **Project Name**: `ClaraAI`
 3. **Region**: Choose closest to your users (e.g., US East)
 4. **PostgreSQL Version**: 16 (latest)
 5. Click **"Create Project"**
@@ -59,11 +59,11 @@ psql "postgresql://[your-connection-string]" -f backend/schema.sql
 ### 2.1 Create Render Account
 1. Go to **https://render.com**
 2. Sign up with GitHub
-3. Grant access to your WomenAI repository
+3. Grant access to your ClaraAI repository
 
 ### 2.2 Create Web Service
 1. Click **"New +"** → **"Web Service"**
-2. Select your **WomenAI repository**
+2. Select your **ClaraAI repository**
 3. **Name**: `womenai-api`
 4. **Region**: Oregon (US West) or closest to you
 5. **Branch**: `main` (or your primary branch)
@@ -177,7 +177,7 @@ vercel --prod
 ### 4.2 Add Monitor
 1. Click **"+ Add New Monitor"**
 2. **Monitor Type**: HTTP(s)
-3. **Friendly Name**: WomenAI API Keep-Alive
+3. **Friendly Name**: ClaraAI API Keep-Alive
 4. **URL**: `https://womenai-api.onrender.com/health`
 5. **Monitoring Interval**: 5 minutes
 6. Click **"Create Monitor"**
@@ -228,7 +228,7 @@ vercel --prod
 
 ## Deployment Complete! 🎉
 
-Your WomenAI app is now live at:
+Your ClaraAI app is now live at:
 - **Frontend**: https://womenai.vercel.app
 - **Backend API**: https://womenai.onrender.com
 

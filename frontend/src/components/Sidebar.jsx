@@ -8,7 +8,7 @@ export default function Sidebar() {
         <aside className="sidebar">
             <div className="sidebar-header">
                 <span className="logo-icon">🌸</span>
-                <span className="logo-text">WomenAI</span>
+                <span className="logo-text">ClaraAI</span>
             </div>
 
             <nav className="sidebar-nav">

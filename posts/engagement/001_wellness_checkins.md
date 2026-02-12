@@ -28,7 +28,7 @@ Drop a 💜 if you're prioritizing yourself this weekend.
 
 What's your favorite self-care activity?
 
-#SelfCareSunday #WomenAI #Wellness
+#SelfCareSunday #ClaraAI #Wellness
 
 ---
 

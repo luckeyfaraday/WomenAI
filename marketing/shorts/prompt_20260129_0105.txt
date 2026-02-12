@@ -1,0 +1,58 @@
+
+PROJECT: WomenAI
+PERSONA: WomenAI (Empathetic Health Tech)
+
+CONTEXT FROM LAST 48h BUILD:
+
+--- MEMORY LOG: lessons_learned.md ---
+# Lessons Learned
+
+A repository of insights and improvements for future interactions.
+
+- [ ] **Lesson 1**: (Example) Always check for an existing `TODO.md` before creating a new task list.
+- [ ] **Lesson 2**: **NEVER push to remote repositories (GitHub).** This is a forbidden action. Only the user performs pushes.
+- [ ] **Lesson 3**: **Clean Text Only**. Social media drafts (Tweets/Reddit) must be plain text. No markdown formatting (bold/italics) as it breaks copy-paste.
+
+--- MEMORY LOG: decisions.md ---
+# Decision Log
+
+Record significant decisions here to maintain context over time.
+
+| Date | Decision | Rationale | AI Agent |
+|------|----------|-----------|----------|
+|      |          |           |          |
+
+--- PROJECT OVERVIEW ---
+# WomenAI Project
+
+## Overview
+WomenAI is an AI assistant specifically designed to cater to the needs, preferences, and challenges faced by women. The project's initial focus is on delivering high-impact, feasible features in the domains of Health and Safety. The core value proposition is to provide a general-purpose AI assistant optimized for emotional support and addressing woman-specific problems.
+
+## Architecture
+- **/concept.md**: The original ideation document outlining the project's vision, goals, and MVP features.
+- **/README.md**: This file.
+
+## Setup / Run
+(This project is currently in the planning phase. No setup or run commands are available yet.)
+
+## Roadmap
+- [ ] **MVP Development**:
+    - [x] Detail specific functionalities for Menstrual Cycle Tracking.
+    - [x] Detail specific functionalities for Mental Wellness Support.
+    - [x] Detail specific functionalities for Safety Resources Info.
+- [ ] **Phase 2**:
+    - [ ] Implement the MVP features.
+    - [ ] Gather user feedback.
+
+
+TASK:
+Generate a 55-second viral TikTok/Shorts script.
+Theme: "The Build of the Day".
+Structure:
+1. THE HOOK (0-5s): Something punchy and provocative.
+2. THE PROBLEM (5-15s): Why what we built today matters.
+3. THE SOLUTION/CODE (15-45s): High-speed technical breakdown or 'Hacker' visual description.
+4. THE CTA (45-55s): Drive to the repo or site.
+
+TONE: Punchy, no fluff, high-value.
+OUTPUT FORMAT: JSON with 'title', 'script', and 'visual_cues'.

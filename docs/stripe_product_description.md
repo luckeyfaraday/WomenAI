@@ -1,17 +1,17 @@
-# WomenAI Stripe Product Description
+# ClaraAI Stripe Product Description
 
 ## Product Name
-**WomenAI Premium**
+**ClaraAI Premium**
 
 ## Tagline
 Your AI companion for women's health, wellness, and safety
 
 ## Short Description (for Stripe Dashboard)
-Premium subscription for WomenAI - an AI-powered health companion designed specifically for women. Includes unlimited cycle tracking, mood logging, AI chat support, and safety resources.
+Premium subscription for ClaraAI - an AI-powered health companion designed specifically for women. Includes unlimited cycle tracking, mood logging, AI chat support, and safety resources.
 
 ## Full Product Description
 
-WomenAI Premium gives you unlimited access to your personal AI health companion, designed specifically to support women's wellness, mental health, and safety.
+ClaraAI Premium gives you unlimited access to your personal AI health companion, designed specifically to support women's wellness, mental health, and safety.
 
 ### What's Included:
 
@@ -44,9 +44,9 @@ WomenAI Premium gives you unlimited access to your personal AI health companion,
 - Priority support
 - Early access to new features
 
-### Why WomenAI Premium?
+### Why ClaraAI Premium?
 
-Your health and wellbeing deserve more than generic apps. WomenAI is built by women, for women, with deep understanding of the unique challenges you face. Our AI is trained to be empathetic, knowledgeable, and always available when you need support.
+Your health and wellbeing deserve more than generic apps. ClaraAI is built by women, for women, with deep understanding of the unique challenges you face. Our AI is trained to be empathetic, knowledgeable, and always available when you need support.
 
 ### Privacy & Security
 - Your data is encrypted and private
@@ -70,7 +70,7 @@ Your health and wellbeing deserve more than generic apps. WomenAI is built by wo
 - ❌ Data export
 - ❌ Priority support
 
-**Best for:** Trying out WomenAI and basic tracking needs
+**Best for:** Trying out ClaraAI and basic tracking needs
 
 ---
 
@@ -117,8 +117,8 @@ Your health and wellbeing deserve more than generic apps. WomenAI is built by wo
 - Period tracking apps: $5-15/month (limited features)
 - Mental health apps: $10-20/month
 - Health coaching: $50-150/month
-- **WomenAI Premium:** $9.99/month (all-in-one solution)
-- **WomenAI Ultra:** $19.99/month (premium + coaching + advanced AI)
+- **ClaraAI Premium:** $9.99/month (all-in-one solution)
+- **ClaraAI Ultra:** $19.99/month (premium + coaching + advanced AI)
 
 **ROI:**
 - Save time with AI-powered insights
@@ -131,7 +131,7 @@ Your health and wellbeing deserve more than generic apps. WomenAI is built by wo
 ## Marketing Copy for Stripe Checkout
 
 ### Headline
-**Unlock Your Full WomenAI Experience**
+**Unlock Your Full ClaraAI Experience**
 
 ### Subheadline
 Join thousands of women taking control of their health and wellness
@@ -146,14 +146,14 @@ Join thousands of women taking control of their health and wellness
 **Start Your Premium Journey Today**
 
 ### Money-Back Guarantee
-Try WomenAI Premium risk-free for 30 days. If you're not completely satisfied, we'll refund your money, no questions asked.
+Try ClaraAI Premium risk-free for 30 days. If you're not completely satisfied, we'll refund your money, no questions asked.
 
 ---
 
 ## Stripe Product Setup
 
 ### Product Details
-- **Name:** WomenAI Premium
+- **Name:** ClaraAI Premium
 - **Description:** (Use "Full Product Description" above)
 - **Statement Descriptor:** WOMENAI PREMIUM
 - **Unit Label:** subscription
@@ -170,7 +170,7 @@ Try WomenAI Premium risk-free for 30 days. If you're not completely satisfied, w
 - Type: Recurring
 - Save: 17% compared to monthly
 
-### WomenAI Ultra
+### ClaraAI Ultra
 
 **Monthly:**
 - Price: $19.99 USD
@@ -200,11 +200,11 @@ trial_days: 7
 ## Customer Communication
 
 ### Welcome Email (Premium)
-Subject: Welcome to WomenAI Premium! 🌸
+Subject: Welcome to ClaraAI Premium! 🌸
 
 Hi [Name],
 
-Welcome to WomenAI Premium! You now have unlimited access to:
+Welcome to ClaraAI Premium! You now have unlimited access to:
 - 24/7 AI chat support
 - Unlimited cycle and mood tracking
 - Advanced analytics and insights
@@ -217,7 +217,7 @@ Get started: [Dashboard Link]
 Questions? Reply to this email anytime.
 
 With care,
-The WomenAI Team
+The ClaraAI Team
 
 ### Cancellation Email
 Subject: We're sorry to see you go
@@ -231,4 +231,4 @@ Your data is safe and will remain accessible. You can reactivate anytime.
 We'd love to know why you're leaving: [Feedback Form]
 
 Take care,
-The WomenAI Team
+The ClaraAI Team

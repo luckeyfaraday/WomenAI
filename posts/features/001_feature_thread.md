@@ -1,11 +1,11 @@
-# Feature Thread: What Makes WomenAI Different
+# Feature Thread: What Makes ClaraAI Different
 
 ## Tweet 1/4
-🌸 WomenAI is here to support you in ways that matter.
+🌸 ClaraAI is here to support you in ways that matter.
 
 Let's talk about what makes us different 👇
 
-#WomensHealth #WomenAI
+#WomensHealth #ClaraAI
 
 ---
 
@@ -34,7 +34,7 @@ Immediate access to crisis hotlines & resources. Because your safety is never ne
 
 You're not alone. We're here. 💗
 
-Try WomenAI today → [link]
+Try ClaraAI today → [link]
 
 ---
 

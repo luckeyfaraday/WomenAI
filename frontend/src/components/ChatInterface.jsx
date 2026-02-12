@@ -11,7 +11,7 @@ export default function ChatInterface() {
     const [messages, setMessages] = useState([
         {
             role: 'assistant',
-            content: 'Hi! I\'m your WomenAI companion. I\'m here to support you with health tracking, emotional wellness, and safety information. How can I help you today?'
+            content: 'Hi! I\'m your ClaraAI companion. I\'m here to support you with health tracking, emotional wellness, and safety information. How can I help you today?'
         }
     ]);
     const [input, setInput] = useState('');
@@ -104,7 +104,7 @@ export default function ChatInterface() {
                 <div className="login-prompt-overlay" onClick={() => setShowLoginPrompt(false)}>
                     <div className="login-prompt-modal" onClick={e => e.stopPropagation()}>
                         <h3>Sign in to Chat</h3>
-                        <p>Create a free account to start chatting with WomenAI. Your conversations and health data will be saved securely.</p>
+                        <p>Create a free account to start chatting with ClaraAI. Your conversations and health data will be saved securely.</p>
                         <button className="btn btn-primary" onClick={login} style={{ width: '100%', marginTop: 'var(--space-md)' }}>
                             <LogIn size={18} style={{ marginRight: '0.5rem' }} />
                             Sign in with Google
@@ -123,7 +123,7 @@ export default function ChatInterface() {
             <div className="chat-container card">
                 <div className="chat-header">
                     <MessageCircle className="icon-primary" />
-                    <h3>Chat with WomenAI</h3>
+                    <h3>Chat with ClaraAI</h3>
                 </div>
 
                 <div className="chat-messages">

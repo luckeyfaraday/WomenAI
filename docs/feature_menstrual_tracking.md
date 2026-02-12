@@ -1,7 +1,7 @@
 # Feature: Menstrual Cycle Tracking
 
 ## Overview
-The Menstrual Cycle Tracking feature allows users to log their menstrual cycles, track symptoms, and receive predictions for future cycles. This is a core component of the health-focused MVP for WomenAI.
+The Menstrual Cycle Tracking feature allows users to log their menstrual cycles, track symptoms, and receive predictions for future cycles. This is a core component of the health-focused MVP for ClaraAI.
 
 ## goals
 - Enable users to log cycle start and end dates.
